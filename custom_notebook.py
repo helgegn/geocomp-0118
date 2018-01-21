@@ -82,14 +82,20 @@ def exCells(notebook):
 
     Returns dict with template cells
     """
+    [
+    "## Exercises\n",
+    "\n",
+    "- Read the data from B-41_tops.txt\n",
+    "- Write a function that will load data from either of these files\n",
+    "- Load the data to pandas\n",
+    "- Write a new CSV files with the cleaned data"
+   ]
     clean = []
     wraphead = ["<div class=\"alert alert-success\">\n",
                 "<b>Exercise</b>:\n",
-                "<ul>\n",
-                "<li>\n"]
+                "<ul>\n"]
 
-    wraptail = ["</li>\n",
-                "<p>\n",
+    wraptail = [
                 "</ul>\n",
                 "</div>"]
 
@@ -98,6 +104,15 @@ def exCells(notebook):
         try:
             tags = cell['metadata']['tags']
             if True in map(lambda x: x.lower().startswith('ex'), tags):
+                if len(cell['source']) < 25:
+                    cell['source'] = cell['source'][1:]
+                cell['source'] = list(map(lambda x: "<li>" + x.strip('\n') + "</li>\n", cell['source']))
+                # print(cell['source'])
+                temp = []
+                for elem in cell['source']:
+                    if elem != '<li></li>\n':
+                        temp.append(elem)
+                cell['source'] = list(temp)
                 cell['source'] = wraphead + cell['source'] + wraptail
                 clean.append(cell)
             else:
@@ -199,7 +214,7 @@ def movefiles(names, dest):
     """
     """
     for name in names:
-        copyfile(name.strip('\n'), dest+'/'+name.strip('\n'))
+        copyfile(name.strip('\n'), dest+'/'+name.split("/")[-1].strip('\n'))
 
     return
 
@@ -213,7 +228,7 @@ def processList(fname):
     with open(fname, 'r') as f:
         notebook_list = f.readlines()
 
-    student = 'student'
+    student = 'notebooks'
     instructor = 'instructor'
     makedirs(student)
     makedirs(instructor)
@@ -225,18 +240,18 @@ def processList(fname):
 
     os.chdir(os.path.join(cwd, student))
     for name in notebook_list:
-        fname = name.strip('\n')
+        fname = name.split("/")[-1].strip('\n')
         process(fname, fname)
 
-    # os.chdir(os.path.join(cwd, instructor))
-    # for name in notebook_list:
-    #     fname = name.strip('\n')
-    #     process(fname, fname,
-    #             poutput=True,
-    #             pkeep=False,
-    #             phide=False,
-    #             pexercise=True,
-    #             phidecode=False)
+    os.chdir(os.path.join(cwd, instructor))
+    for name in notebook_list:
+        fname = name.split("/")[-1].strip('\n')
+        process(fname, fname,
+                poutput=True,
+                pkeep=False,
+                phide=False,
+                pexercise=True,
+                phidecode=False)
     
 
     return
