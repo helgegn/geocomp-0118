@@ -1,0 +1,14 @@
+name: geocomp
+channels:
+- conda-forge
+dependencies:
+- anaconda
+- ipyparallel
+- obspy
+- geopandas
+- folium
+- cartopy
+- pip:
+  - bruges
+  - welly
+  - segyio

@@ -1,0 +1,18 @@
+tops = {'Abenaki Fm': 3404.3112,
+ 'Base O-Marker': 2469.207,
+ 'Dawson Canyon Fm': 984.50402,
+ 'Logan Canyon Fm': 1136.904,
+ 'Lower Baccaro': 3964.5337,
+ 'Lower Missisauga Fm': 3190.6464,
+ 'Mid Baccaro': 3485.0832,
+ 'Pay_Sand_1-Rft': 2478.0,
+ 'Pay_Sand_2': 2499.0,
+ 'Pay_Sand_3': 2543.0,
+ 'Pay_Sand_4': 2637.0,
+ 'Sand_5': 2699.0,
+ 'Sand_6': 2795.0,
+ 'Sand_7': 2835.0,
+ 'Td': 4268.0,
+ 'Upper Missisauga Fm': 2251.2529,
+ 'Wyandot Fm': 867.156}
+
