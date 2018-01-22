@@ -30,7 +30,6 @@ master/Reading_data_from_files.ipynb
 master/Read_SEGY_with_ObsPy.ipynb
 master/Read_SEG-Y_with_segyio.ipynb
 master/Seismic_volume_plotting.ipynb
-master/Simple_kriging.ipynb
 master/Statoil_segyio_and_segyviewer.ipynb
 master/Synthetic_seismogram.ipynb
 master/Synthetic_wedge.ipynb
